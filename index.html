@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en" class="sr">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+
+  <style>
+    /* Put the CSS code here */
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Container styles */
+    .container {
+      max-width: 1200px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Heading styles */
+    h1, h2, h3 {
+      color: var(--text-color);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Paragraph styles */
+    p {
+      line-height: 1.6;
+    }
+
+    /* Button styles */
+    .cta-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: var(--primary-color);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .cta-btn--hero {
+      font-size: 20px;
+    }
+
+    .cta-btn--resume {
+      background-color: var(--secondary-color);
+    }
+
+    /* Section styles */
+    section {
+      margin-bottom: 40px;
+    }
+
+    /* Hero section styles */
+    #hero {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 60px 0;
+    }
+
+    .hero-title {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .text-color-main {
+      color: var(--secondary-color);
+    }
+
+    .hero-cta {
+      text-align: center;
+    }
+
+    /* About section styles */
+    #about {
+      background-color: var(--background-color);
+      padding: 60px 0;
+    }
+
+    .about-wrapper__image {
+      text-align: center;
+    }
+
+    .about-wrapper__info {
+      margin-top: 20px;
+    }
+
+    .about-wrapper__info-text {
+      margin-bottom: 20px;
+    }
+
+    /* Projects section styles */
+    #projects {
+      background-color: var(--background-color);
+      padding: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .projects-wrapper {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .project {
+      flex: 0 0 calc(33.33% - 20px);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .project-wrapper__text-title {
+      margin-bottom: 20px;
+    }
+
+    .project-wrapper__text p {
+      margin-bottom: 20px;
+    }
+
+    .project-wrapper__text a {
+      display: block;
+      margin-top: 20px;
+    }
+
+    .project-wrapper__text a:hover {
+      text-decoration: none;
+    }
+
+    .project-wrapper__image img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Contact section styles */
+    #contact {
+      background-color: var(--background-color);
+      padding: 80px 0;
+    }
+
+    .contact-wrapper {
+      text-align: center;
+    }
+
+    .contact-wrapper__text {
+      margin-bottom: 20px;
+    }
+
+    /* Form styles */
+    form {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    input[type="submit"] {
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: var(--tertiary-color);
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      position: relative;
+    }
+
+    .back-to-top {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .social-links a {
+      color: #fff;
+      font-size: 24px;
+      margin: 0 10px;
+    }
+
+    .social-links a:hover {
+      text-decoration: none;
+    }
+
+    .footer__text {
+      margin-top: 20px;
+    }
+
+    /* Header styles */
+    header {
+      background-color: var(--tertiary-color);
+      padding: 10px 0;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 100%;
+      padding: 0 20px;
+    }
+
+    .logo {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu li {
+      display: inline;
+      margin-left: 20px;
+    }
+
+    .nav-menu li:first-child {
+      margin-left: 0;
+    }
+
+    .nav-menu li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-menu li a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .load-hidden {
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    /* Colors */
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #28a745;
+      --tertiary-color: #000;
+      --background-color: #f4f4f4;
+      --text-color: #333;
+    }
+
+    /* Media Queries */
+    @media (max-width: 1200px) {
+      .project {
+        flex: 0 0 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .project {
+        flex: 0 0 calc(100% - 20px);
+      }
+    }
+  </style>
+  <!-- Todo: put here your site title -->
+  <title>Gustavo Rampanelli | Developer</title>
+  <!-- Todo: add some coding keywords below - e.g: (javascript, yourusername, etc) -->
+  <meta name="keywords" content="rampanelli, gustavo, developer, html, css, javascript, python" />
+  <!-- Todo: improve your SEO by adding a small description of you -->
+  <meta name="description" content="Gustavo Rampanelli | Developer" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link rel="stylesheet" href="styles.scss" />
+  <script
+    defer
+    src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"
+  ></script>
+
+  <!-- Todo: remove the below script once you finish your portfolio -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<!-- Todo: read the following HTML Todos to create your stunning portfolio website -->
+<body>
+  <div id="top"></div>
+
+  <!-- ** Hero Section ** -->
+  <section id="hero" class="jumbotron">
+    <div class="container">
+      <h1 class="hero-title load-hidden">
+        Olá, meu nome é <span class="text-color-main">Gustavo Rampanelli</span>
+        <br />
+        E eu sou um desenvolvedor.
+      </h1>
+      <p class="hero-cta load-hidden">
+        <a rel="noreferrer" class="cta-btn cta-btn--hero" href="#about"
+          >Saiba Mais</a
+        >
+      </p>
+    </div>
+  </section>
+  <!-- /END Hero Section -->
+
+  <!-- ** About Section ** -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title load-hidden">Sobre Mim</h2>
+      <div class="row about-wrapper">
+        <div class="col-md-6 col-sm-12">
+          <div class="about-wrapper__image load-hidden">
+            <img
+              alt="Profile Image"
+              class="img-fluid rounded shadow-lg"
+              height="auto"
+              width="300px"
+              src="icon.png"
+              alt="Profile Image"
+            />
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="about-wrapper__info load-hidden">
+            <p class="about-wrapper__info-text">
+              Me chamo Gustavo Rampanelli, tenho 20 anos e sou um estudante de Ciência da Computação na ATITUS.Adoro tecnologia, Desing, Jogos e Inovação. Sou residente da cidade de Fontoura Xavier, RS. Busco bastante desafios e tenho uma forte determinação em aprender e crescer, tanto como pessoa quanto proficionalmente. Sou bastante comunicativo e busco novas experiencias na area. Minhas principais areas de conhecimentos são Desing, Front-end(HTML, CSS e Javascript),
+            </p>
+            <p class="about-wrapper__info-text">
+              Aqui está o meu contato:
+            </p>
+            <form action="mailto:gustavo.rampanelli@email.com" method="post" enctype="text/plain">
+              <label for="name">Nome:</label><br>
+              <input type="text" id="name" name="name"><br>
+              <label for="email">Email:</label><br>
+              <input type="text" id="email" name="email"><br>
+              <label for="message">Mensagem:</label><br>
+              <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+              <input type="submit" value="Enviar">
+            </form>
+            <span class="d-flex mt-3">
+              <a
+                rel="noreferrer"
+                target="_blank"
+                class="cta-btn cta-btn--resume"
+                href="assets/resume.pdf"
+              >
+                Ver Curriculo
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /END About Section -->
+
+  <!-- ** Projects Section ** -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title dark-blue-text">Projetos</h2>
+
+      <!-- Notice: each .row is a project -->
+      <div class="projects-wrapper">
+        <!-- Notice: each .row is a project -->
+        <div class="project">
+          <div class="project-wrapper__text load-hidden">
+            <h3 class="project-wrapper__text-title">Projeto 01</h3>
+            <div>
+              <p class="mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              class="cta-btn cta-btn--hero"
+              href="#!"
+            >
+              Ver projeto
+            </a>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              class="cta-btn text-color-main"
+              href="#!"
+            >
+              Source Code
+            </a>
+          </div>
+          <div class="project-wrapper__image load-hidden">
+            <a rel="noreferrer" href="#!" target="_blank">
+              <div
+                data-tilt
+                data-tilt-max="4"
+                data-tilt-glare="true"
+                data-tilt-max-glare="0.5"
+                class="thumbnail rounded js-tilt"
+              >
+                <img
+                  alt="Project Image"
+                  class="img-fluid"
+                  src="assets/project.jpg"
+                />
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- /END Project -->
+
+        <!-- Notice: each .row is a project -->
+        <div class="project">
+          <div class="project-wrapper__text load-hidden">
+            <h3 class="project-wrapper__text-title">Projeto 02</h3>
+            <div>
+              <p class="mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              class="cta-btn cta-btn--hero"
+              href="#!"
+            >
+              Ver projeto
+            </a>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              class="cta-btn text-color-main"
+              href="#!"
+            >
+              Source Code
+            </a>
+          </div>
+          <div class="project-wrapper__image load-hidden">
+            <a rel="noreferrer" href="#!" target="_blank">
+              <div
+                data-tilt
+                data-tilt-max="4"
+                data-tilt-glare="true"
+                data-tilt-max-glare="0.5"
+                class="thumbnail rounded js-tilt"
+              >
+                <img
+                  alt="Project Image"
+                  class="img-fluid"
+                  src="assets/project.jpg"
+                />
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- /END Project -->
+
+        <!-- Notice: each .row is a project -->
+        <div class="project">
+          <div class="project-wrapper__text load-hidden">
+            <h3 class="project-wrapper__text-title">Projeto 03</h3>
+            <div>
+              <p class="mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              class="cta-btn cta-btn--hero"
+              href="#!"
+            >
+              Ver projeto
+            </a>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              class="cta-btn text-color-main"
+              href="#!"
+            >
+              Source Code
+            </a>
+          </div>
+          <div class="project-wrapper__image load-hidden">
+            <a rel="noreferrer" href="#!" target="_blank">
+              <div
+                data-tilt
+                data-tilt-max="4"
+                data-tilt-glare="true"
+                data-tilt-max-glare="0.5"
+                class="thumbnail rounded js-tilt"
+              >
+                <img
+                  alt="Project Image"
+                  class="img-fluid"
+                  src="assets/project.jpg"
+                />
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- /END Project -->
+      </div>
+    </div>
+  </section>
+  <!-- /END Projects Section -->
+
+  <!-- ** Contact Section ** -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contato</h2>
+      <div class="contact-wrapper load-hidden">
+        <p class="contact-wrapper__text">Entre em contato comigo:</p>
+        <form action="mailto:gustavo.rampanelli@email.com" method="post" enctype="text/plain">
+          <label for="name">Nome:</label><br>
+          <input type="text" id="name" name="name"><br>
+          <label for="email">Email:</label><br>
+          <input type="text" id="email" name="email"><br>
+          <label for="message">Mensagem:</label><br>
+          <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+          <input type="submit" value="Enviar">
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- /END Contact Section -->
+
+  <!-- ** Footer Section ** -->
+  <footer class="footer navbar-static-bottom">
+    <div class="container">
+      <a rel="noreferrer" href="#top" class="back-to-top">
+        <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
+      </a>
+      <div class="social-links">
+        <a rel="noreferrer" href="#!" target="_blank">
+          <i class="fa fa-twitter fa-inverse"></i>
+        </a>
+        <a rel="noreferrer" href="#!" target="_blank">
+          <i class="fa fa-linkedin fa-inverse"></i>
+        </a>
+        <a rel="noreferrer" href="#!" target="_blank">
+          <i class="fa fa-github fa-inverse"></i>
+        </a>
+      </div>
+
+      <hr />
+
+      <!-- Notice: if you want to give me some credit, it will be huge for me! if not, put your data on it -->
+      <p class="footer__text">
+        ©️ 2021 - Template developed by
+        <a rel="noreferrer" href="https://github.com/cobiwave" target="_blank"
+          >Gustavo Rampanelli 2024</a
+        >
+      </p>
+
+      <!-- TO DO: remove this entire paragraph once you finish your portfolio -->
+      <p class="mt-3 pt-3">
+        <a
+          rel="noreferrer"
+          class="github-button"
+          href="https://github.com/cobiwave/simplefolio/fork"
+          data-icon="octicon-repo-forked"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Fork ntkme/github-buttons on GitHub"
+          >Fork</a
+        >
+        <a
+          rel="noreferrer" 
+          class="github-button"
+          href="https://github.com/cobiwave/simplefolio"
+          data-icon="octicon-star"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star cobiwave/simplefolio on GitHub"
+          >Star</a
+        >
+      </p>
+    </div>
+  </footer>
+  <!-- /END Footer Section -->
+
+  <script defer type="module" src="main.js"></script>
+</body>
+</html>
